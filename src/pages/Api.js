@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './Api.css'
+import { Link } from 'react-router-dom';
 
 
 
@@ -35,6 +36,7 @@ const Api = () => {
                 <button>Submit</button>
             </form>
         </div>
+        <Link to='/' className='api-link'>Zpět</Link>
     </div>
 
 }

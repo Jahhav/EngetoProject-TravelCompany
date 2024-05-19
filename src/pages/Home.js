@@ -6,6 +6,7 @@ import Content from '../components/Content.component'
 import { PiBookOpenText, PiPackageBold } from "react-icons/pi";
 import { MdOutlineComputer } from "react-icons/md";
 import { TbTruckDelivery } from "react-icons/tb";
+import { Link } from 'react-router-dom'
 
 
 const { slogany, contentData } = exportData
@@ -50,6 +51,7 @@ const Home = () => {
                     <Card image={<PiPackageBold />} heading={"Přeprava pro e-commerce"} text={"Zaregistrujte si účet získejte prioritní odbavení."} />
                 </div>
             </div>
+            <Link to='/api' className='api-link'>API</Link>
             <div className='third-section'>
                 <div className='navigation-buttons'>
                     <button onClick={() => { setContent(contentData[0]) }}>Technologie</button>
@@ -60,7 +62,7 @@ const Home = () => {
                 <Content heading={heading} text={text} />
             </div>
         </div>
-    </div>
+    </div >
 }
 
 

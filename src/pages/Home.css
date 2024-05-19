@@ -44,6 +44,10 @@
 }
 .background{
     background: linear-gradient(to top, rgba(95, 158, 160, 1), rgba(95, 158, 160, 0.2));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .second-section{
     display: flex;
@@ -86,4 +90,27 @@
 }
 .navigation-buttons button:hover{
     background-color: rgba(0, 165, 132, 0.7);
+}
+
+.api-link {
+    display: inline-block;
+    margin: 20px auto;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background-color: #007BFF;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.api-link:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.api-link:active {
+    background-color: #004080;
 }
