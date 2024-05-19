@@ -1,0 +1,17 @@
+.content-container{
+    width: 60%;
+    height: 250px;
+    background-color: rgb(95, 95, 95, 0.6);
+    margin-bottom: 50px;
+    padding: 20px;
+    font-family: "Arial", sans-serif;
+    border-radius: 30px;
+    color: rgb(0, 0, 0);
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+}
+.content-container h1{
+font-size: 34px;
+}
+.content-container p{
+font-size: 24px;
+}

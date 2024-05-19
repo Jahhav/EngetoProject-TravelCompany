@@ -1,0 +1,45 @@
+
+const slogany = [
+    {
+        id: 1,
+        slogan: "Bezpečně, efektivně, spolehlivě - váš obchodní partner na silnici.",
+    },
+    {
+        id: 2,
+        slogan: "Rychlé doručování klíčem k úspěchu. S námi jste vždy v čele.",
+    },
+    {
+        id: 3,
+        slogan: "Inovativní spojení rychlosti a spolehlivosti - váš nezbytný parter na cestách.",
+    },
+]
+
+const contentData = [
+    {
+        id: 1,
+        heading: "Technologie",
+        text: "Nové technologie podporují náš každodenní život a vytvářejí naši realitu. Všichni je využíváme doma i v práci. Jako experti v oblasti logistiky chápeme, že elektronická zařízení a bílé zboží by měly získávat komplexní logistická řešení, která podporují nejen výrobu, ale také dodávky do obchodů a dokonce i koncovým zákazníkům."
+    },
+    {
+        id: 2,
+        heading: "Projekty na míru",
+        text: "Jsme důvěryhodný partner, který nabízí komplexní služby pro všechny technologické firmy. Navrhujeme skladová a distribuční řešení, která podporují regionální specifika a konkrétní požadavky investičních projektů."
+    },
+    {
+        id: 3,
+        heading: "Udržitelnost",
+        text: "Naším cílem je zapojit se do udržitelných řešení, udávat trendy a být lídrem v odvětví přepravy a logistiky."
+    },
+    {
+        id: 4,
+        heading: "Specializovaná řešení",
+        text: "V rámci našich služeb nabízíme záložní návěsy, které jsou k dispozici na externím parkovišti v blízkosti nakládacího depa 24 hodin denně, 6 dní v týdnu."
+    },
+]
+
+const exportData = {
+    slogany,
+    contentData
+};
+
+export default exportData;
