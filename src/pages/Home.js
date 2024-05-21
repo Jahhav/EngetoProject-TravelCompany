@@ -1,3 +1,5 @@
+// Jan Havlát
+
 import { useEffect, useState } from 'react'
 import './Home.css'
 import exportData from '../data'
