@@ -8,55 +8,75 @@ import DescriptionApi from '../components/DescriptionApi.component';
 const Api = () => {
 
     const [state, setState] = useState('')
-    const [zipCode, setZipCode] = useState('612 00')
-    const [responseData, setResponseData] = useState(null); // State to store API response data
+    const [zipCode, setZipCode] = useState('')
     const [cities, setCities] = useState([])
-    const [country, setCountry] = useState('')
+    const [city, setCity] = useState('')
+    const [submitted, setSubmitted] = useState(false)
+    const [error, setError] = useState('')
 
 
 
-    useEffect(() => {
 
-        const fetchData = async () => {
-            try {
-                const response = await fetch(`http://api.zippopotam.us/${state}/${zipCode}`)
-                if (response.ok) {
-                    const data = await response.json();
-                    setResponseData(data)
-                    const placeNames = data.places.map(place => place['place name'].replace(/ x\)/g, ''))
-                    setCities(placeNames)
-                    setCountry(data.country)
-                } else {
-                    console.log("CHYBA: " + response.status);
-                }
-            } catch (error) {
-                console.log("Error fatching data: ", error)
+    const fetchData = async () => {
+        try {
+            const response = await fetch(`http://api.zippopotam.us/${state}/${zipCode}`)
+            if (response.ok) {
+                const data = await response.json();
+                console.log("API Response data: ", data);
+                const placeNames = data.places.map(place => place['place name'].replace(/ x\)/g, ''))
+                setCities(placeNames)
+                setCity(data.places[0].state)
+                setError('')
+            } else {
+                setError("Chyba: Zadaná kombinace PSČ a země nebyla nalezena.");
+                console.log("CHYBA: " + response.status);
             }
-        };
-
-        if (state && zipCode) {
-            fetchData()
+        } catch (error) {
+            setError("Chyba při načítání dat.");
+            console.log("Error fatching data: ", error)
         }
-    }, [state, zipCode])
+    };
 
 
 
 
 
-    const formSubmitHandler = (e) => {
+    const formSubmitHandler = async (e) => {
         e.preventDefault();
-        console.log(zipCode, state);
-        console.log(responseData);
-        console.log(responseData.places[0].state);
-        console.log(responseData.country);
-        console.log(cities);
+
+
+        setSubmitted(false);
+        setError('')
+        setCities([])
+        setCity('')
+        await fetchData();
+        setSubmitted(true);
+    }
+
+    const handleZipCodeChange = (e) => {
+        let value = e.target.value
+        // Remove any non-numeric characters
+        value = value.replace(/\D/g, '');
+
+        // Insert a space after the third character
+        if ((state === "cz" || state === "sk") && value.length > 3) {
+            value = value.slice(0, 3) + ' ' + value.slice(3);
+        }
+        setZipCode(value)
+
+    }
+
+    const handleStateChange = (e) => {
+        setState(e.target.value)
+        setZipCode('')
     }
 
     return <div className='body-api'>
+        <h1>Zip Code tracker</h1>
         <div className='main-container'>
             <form onSubmit={formSubmitHandler}>
-                <input type='text' onChange={(e) => { setZipCode(e.target.value) }} value={zipCode} placeholder='612 00'></input>
-                <select value={state} onChange={(e) => { setState(e.target.value) }}>
+                <input type='text' onChange={handleZipCodeChange} value={zipCode} placeholder='např. 612 00'></input>
+                <select value={state} onChange={handleStateChange}>
                     <option value=''>Vyber zemi</option>
                     <option value='cz'>Česko</option>
                     <option value='sk'>Slovensko</option>
@@ -69,12 +89,19 @@ const Api = () => {
             </div>
         </div>
         <div className='second-container main-container'>
-            <h3>{country}</h3>
-            <div className='cities'>
-                {cities.map((city) => {
-                    return <p>{city}</p>
-                })}
-            </div>
+            {error && <p className='error'>{error}</p>}
+            {
+                submitted && !error && (
+                    <>
+                        <h3>{city}</h3>
+                        <div className='cities'>
+                            {cities.map((city, index) => {
+                                return <p key={index}>{city}</p>
+                            })}
+                        </div>
+                    </>
+                )
+            }
         </div>
         <Link to='/' className='api-link'>Zpět</Link>
     </div>
