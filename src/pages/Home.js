@@ -24,6 +24,7 @@ const Home = () => {
 
     const [slogan, setSlogan] = useState('')
     const [content, setContent] = useState(contentData[0])
+    const [selectedTab, setSelectedTab] = useState(0)
 
 
     useEffect(() => {
@@ -33,6 +34,11 @@ const Home = () => {
 
 
     const { id, heading, text } = content
+
+    const handleTabClick = (index) => {
+        setContent(contentData[index])
+        setSelectedTab(index)
+    }
 
 
     return <div className='body'>
@@ -51,13 +57,16 @@ const Home = () => {
                     <Card image={<PiPackageBold />} heading={"Přeprava pro e-commerce"} text={"Zaregistrujte si účet získejte prioritní odbavení."} />
                 </div>
             </div>
-            <Link to='/api' className='api-link'>API</Link>
+            <Link to='/api' className='api-link'>Tracker</Link>
             <div className='third-section'>
                 <div className='navigation-buttons'>
-                    <button onClick={() => { setContent(contentData[0]) }}>Technologie</button>
-                    <button onClick={() => { setContent(contentData[1]) }}>Projekty</button>
-                    <button onClick={() => { setContent(contentData[2]) }}>Udržitelnost</button>
-                    <button onClick={() => { setContent(contentData[3]) }}>Specializace</button>
+                    {
+                        contentData.map((item, index) => (
+                            <button key={index}
+                                onClick={() => { handleTabClick(index) }}
+                                className={index === selectedTab ? "active" : ""}>{item.heading}</button>
+                        ))
+                    }
                 </div>
                 <Content heading={heading} text={text} />
             </div>
