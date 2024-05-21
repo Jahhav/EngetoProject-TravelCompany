@@ -6,17 +6,25 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 10px;
 }
 
 .main-container{
     width: 50%;
-    height: 200px;
+    height: 250px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: rgba(95, 158, 160, 0.8);
     border-radius: 20px;
+}
+.main-container form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
 }
 .main-container input{
                padding: 10px 15px;
@@ -29,10 +37,40 @@
 }
 .main-container input:focus{
                 border-color: #007BFF;
-
-}
+            }
+ .main-container select{
+                   padding: 9px 15px;
+            margin: 10px 0;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s;
+ }
 .main-container button{
     height: 40px;
         border-radius: 10px;
     width: 80px;
+}
+.range-description{
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    height: 40px;
+    display: flex;
+    align-items: end;
+}
+.second-container{
+    display: flex;
+    flex-direction: column;
+}
+.second-container h3{
+    margin-bottom: 10px;
+}
+.cities{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
 }
