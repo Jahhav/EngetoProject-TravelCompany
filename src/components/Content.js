@@ -1,7 +1,6 @@
-import './Content.component.css'
+import './Content.css'
 
-const Content = (props) => {
-    const { heading, text } = props
+const Content = ({ heading, text }) => {
     return (
         <div className='content-container'>
             <h1>{heading}</h1>

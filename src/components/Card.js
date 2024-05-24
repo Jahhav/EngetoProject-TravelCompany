@@ -1,7 +1,6 @@
-import './Card.component.css'
+import './Card.css'
 
-const Card = (props) => {
-    const { image, heading, text } = props
+const Card = ({ image, heading, text }) => {
 
     return (
         <div className='upper-div'>
