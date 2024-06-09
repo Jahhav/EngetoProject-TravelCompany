@@ -105,7 +105,7 @@ const Api = () => {
           </>
         )}
       </div>
-      <Link to="/" className="api-link">
+      <Link to="/transport-company-project" className="api-link">
         Zpět
       </Link>
     </div>
