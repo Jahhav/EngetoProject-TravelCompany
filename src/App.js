@@ -8,7 +8,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/EngetoProject" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/api" element={<Api />} />
       </Routes>
     </BrowserRouter>
