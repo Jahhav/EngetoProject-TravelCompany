@@ -1,19 +1,28 @@
 import { useEffect, useState } from "react";
 import "./DescriptionApi.css";
 
-const DescriptionApi = ({ isActive }) => {
+const DescriptionApi = ({ countryCode }) => {
   const [text, setText] = useState("");
 
   const textInDescription = () => {
-    setText("");
-    if (isActive === "cz") setText("Range 100 00 - 798 62");
-    if (isActive === "sk") setText("Range 010 01 - 992 01");
-    if (isActive === "us") setText("Range 00210 - 99950");
+    switch (countryCode) {
+      case "cz":
+        setText("Range 100 00 - 798 62");
+        break;
+      case "sk":
+        setText("Range 010 01 - 992 01");
+        break;
+      case "us":
+        setText("Range 00210 - 99950");
+        break;
+      default:
+        setText("");
+    }
   };
 
   useEffect(() => {
     textInDescription();
-  }, [isActive]);
+  }, [countryCode]);
 
   return (
     <div className="api-body">

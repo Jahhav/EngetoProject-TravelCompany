@@ -21,10 +21,10 @@ const Api = () => {
       );
       if (response.ok) {
         const data = await response.json();
-        console.log("API Response data: ", data);
-        const placeNames = data.places.map((place) =>
-          place["place name"].replace(/ x\)/g, "")
-        );
+        const placeNames = data.places.map((place, index) => ({
+          name: place["place name"].replace(/ x\)/g, ""),
+          id: index + 1,
+        }));
         setFormData((prevFormData) => ({
           ...prevFormData,
           cities: placeNames,
@@ -89,7 +89,7 @@ const Api = () => {
           <button>Submit</button>
         </form>
         <div className="range-description">
-          <DescriptionApi isActive={formData.state} />
+          <DescriptionApi countryCode={formData.state} />
         </div>
       </div>
       <div className="second-container main-container">
@@ -98,8 +98,8 @@ const Api = () => {
           <>
             <h3>{formData.city}</h3>
             <div className="cities">
-              {formData.cities.map((city, index) => {
-                return <p key={index}>{city}</p>;
+              {formData.cities.map((city) => {
+                return <p key={city.id}>{city.name}</p>;
               })}
             </div>
           </>
