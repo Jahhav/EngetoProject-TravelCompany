@@ -17,7 +17,7 @@ const Api = () => {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        `http://api.zippopotam.us/${formData.state}/${formData.zipCode}`
+        `https://api.zippopotam.us/${formData.state}/${formData.zipCode}`
       );
       if (response.ok) {
         const data = await response.json();
