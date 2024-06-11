@@ -10,7 +10,7 @@ const NotFound = () => {
   return (
     <div>
       <h1>Neplatná URL adresa.</h1>
-      <Link to="/transport-company-project" className="api-link">
+      <Link to="/" className="api-link">
         Home
       </Link>
     </div>
@@ -21,7 +21,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/transport-company-project" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/api" element={<Api />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
